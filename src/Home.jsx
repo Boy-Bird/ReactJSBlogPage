@@ -1,9 +1,8 @@
 import Feed from "./Feed";
-import { useContext } from 'react';
-import DataContext from './context/DataContext';
+import { useStoreState } from "easy-peasy";
 
-const Home = () => {
-  const { searchResults, fetchError } = useContext(DataContext);
+const Home = ({fetchError}) => {
+  const searchResults = useStoreState((state) => state.searchResults);
   return (
     <main className="Home">
       {fetchError && <p className="statusMsg" style={{color: "red"}}>{fetchError}</p>}
